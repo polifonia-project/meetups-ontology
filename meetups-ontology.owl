@@ -73,12 +73,14 @@ meetups:hasRole rdf:type owl:ObjectProperty ;
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Award
 meetups:Award rdf:type owl:Class ;
-              rdfs:subClassOf meetups:Purpose .
+              rdfs:subClassOf meetups:Purpose ;
+              rdfs:comment "Represents encounters related to prices, people receiving awards or attending ceremonies" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Business
 meetups:Business rdf:type owl:Class ;
-                 rdfs:subClassOf meetups:Purpose .
+                 rdfs:subClassOf meetups:Purpose ;
+                 rdfs:comment "Music related business" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#City
@@ -88,7 +90,8 @@ meetups:City rdf:type owl:Class ;
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Collaboration
 meetups:Collaboration rdf:type owl:Class ;
-                      rdfs:subClassOf meetups:Purpose .
+                      rdfs:subClassOf meetups:Purpose ;
+                      rdfs:comment "Represents the encounters when people collaborated for example, performing together, writing, composing" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Country
@@ -107,7 +110,8 @@ meetups:Location rdf:type owl:Class ;
                                    owl:onProperty meetups:hasLocation ;
                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass meetups:Location
-                                 ] .
+                                 ] ;
+                 rdfs:comment "The class that represents the location where the meetup took place" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Meetup
@@ -131,12 +135,14 @@ meetups:Meetup rdf:type owl:Class ;
                                  owl:onProperty meetups:hasPurpose ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onClass meetups:Purpose
-                               ] .
+                               ] ;
+               rdfs:comment "This is the main class that represents historical meetups" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Member
 meetups:Member rdf:type owl:Class ;
-               rdfs:subClassOf meetups:Purpose .
+               rdfs:subClassOf meetups:Purpose ;
+               rdfs:comment "Represents encounters that refer to artist joing groups, orchestras, clubs, etc." .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Participant
@@ -146,12 +152,14 @@ meetups:Participant rdf:type owl:Class ;
                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                       owl:onClass meetups:Role
                                     ] ;
+                    rdfs:comment "This class represents all the entities that are part of a historical meetup" ;
                     rdfs:label "Participant" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Performance
 meetups:Performance rdf:type owl:Class ;
-                    rdfs:subClassOf meetups:Purpose .
+                    rdfs:subClassOf meetups:Purpose ;
+                    rdfs:comment "Refers to encounters that describe concerts, private and public performances, etc." .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Period
@@ -160,7 +168,8 @@ meetups:Period rdf:type owl:Class ;
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Purpose
-meetups:Purpose rdf:type owl:Class .
+meetups:Purpose rdf:type owl:Class ;
+                rdfs:comment "The class that represents all the different types of music related reasons for the encounter" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Relative
@@ -169,7 +178,8 @@ meetups:Relative rdf:type owl:Class ;
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Role
-meetups:Role rdf:type owl:Class .
+meetups:Role rdf:type owl:Class ;
+             rdfs:comment "The class that represents the different roles that a particpant played in an encounter, for example, a teacher, the performer, the student, the mentor, etc." .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Time
