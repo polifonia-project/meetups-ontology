@@ -1,0 +1,185 @@
+@prefix : <http://w3id.org/polifonia/ontology/meetups-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix meetups: <http://w3id.org/polifonia/ontology/meetups-ontology#> .
+@base <http://w3id.org/polifonia/ontology/meetups-ontology> .
+
+<http://w3id.org/polifonia/ontology/meetups-ontology> rdf:type owl:Ontology ;
+                                                       dcterms:created """Alba Morales Tirado
+Enrico Daga""" ;
+                                                       dcterms:preferredNamespacePrefix "meetups" ;
+                                                       dcterms:title "MEETUPS Ontology" ;
+                                                       rdfs:comment "The ontology module MEETUPS, which is part of the Polifonia Ontology Network, represents concepts and relationships describing encounters between people in the musical world in Europe from c. 1800 to c. 1945." ;
+                                                       rdfs:seeAlso "MEETUPS ontology repository https://github.com/polifonia-project/meetups-ontology" ;
+                                                       owl:versionInfo "MEETUPS Ontology v0.1" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/preferredNamespacePrefix
+dcterms:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#happensAt
+meetups:happensAt rdf:type owl:ObjectProperty ;
+                  rdfs:domain meetups:Meetup ;
+                  rdfs:range meetups:Time .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasLocation
+meetups:hasLocation rdf:type owl:ObjectProperty ;
+                    rdfs:domain meetups:Meetup ;
+                    rdfs:range meetups:Location .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasParticipant
+meetups:hasParticipant rdf:type owl:ObjectProperty ;
+                       rdfs:domain meetups:Meetup ;
+                       rdfs:range meetups:Participant .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasPurpose
+meetups:hasPurpose rdf:type owl:ObjectProperty ;
+                   rdfs:domain meetups:Meetup ;
+                   rdfs:range meetups:Purpose .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasRole
+meetups:hasRole rdf:type owl:ObjectProperty ;
+                rdfs:domain meetups:Participant ;
+                rdfs:range meetups:Role .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Award
+meetups:Award rdf:type owl:Class ;
+              rdfs:subClassOf meetups:Purpose .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Business
+meetups:Business rdf:type owl:Class ;
+                 rdfs:subClassOf meetups:Purpose .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#City
+meetups:City rdf:type owl:Class ;
+             rdfs:subClassOf meetups:Location .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Collaboration
+meetups:Collaboration rdf:type owl:Class ;
+                      rdfs:subClassOf meetups:Purpose .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Country
+meetups:Country rdf:type owl:Class ;
+                rdfs:subClassOf meetups:Location .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Date
+meetups:Date rdf:type owl:Class ;
+             rdfs:subClassOf meetups:Time .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Location
+meetups:Location rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty meetups:hasLocation ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass meetups:Location
+                                 ] .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Meetup
+meetups:Meetup rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty meetups:hasLocation ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass meetups:Location
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty meetups:hasParticipant ;
+                                 owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                 owl:onClass meetups:Participant
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty meetups:happensAt ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass meetups:Time
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty meetups:hasPurpose ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass meetups:Purpose
+                               ] .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Member
+meetups:Member rdf:type owl:Class ;
+               rdfs:subClassOf meetups:Purpose .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Participant
+meetups:Participant rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty meetups:hasRole ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass meetups:Role
+                                    ] ;
+                    rdfs:label "Participant" .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Performance
+meetups:Performance rdf:type owl:Class ;
+                    rdfs:subClassOf meetups:Purpose .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Period
+meetups:Period rdf:type owl:Class ;
+               rdfs:subClassOf meetups:Time .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Purpose
+meetups:Purpose rdf:type owl:Class .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Relative
+meetups:Relative rdf:type owl:Class ;
+                 rdfs:subClassOf meetups:Time .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Role
+meetups:Role rdf:type owl:Class .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Time
+meetups:Time rdf:type owl:Class ;
+             rdfs:comment "Time or duration of the meetup. It could be that a meetup happened in a specific date or maybe during a specific period" .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#Venue
+meetups:Venue rdf:type owl:Class ;
+              rdfs:subClassOf meetups:Location .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
