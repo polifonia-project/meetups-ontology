@@ -1,6 +1,6 @@
 # MEETUPS Ontology module for MEETUPS PILOT
 
-<!--[![DOI](https://zenodo.org/badge/436452967.svg)](https://zenodo.org/badge/latestdoi/436452967)-->
+[![DOI](https://zenodo.org/badge/588540533.svg)](https://zenodo.org/badge/latestdoi/588540533)
 
 The ontology module MEETUPS, which is part of the Polifonia Ontology Network, represents concepts and relationships describing encounters between people in the musical world in Europe from c. 1800 to c. 1945.
 
