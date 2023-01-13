@@ -1,6 +1,6 @@
 # MEETUPS Ontology module for MEETUPS PILOT
 
-[![DOI](https://zenodo.org/badge/436452967.svg)](https://zenodo.org/badge/latestdoi/436452967)
+<!--[![DOI](https://zenodo.org/badge/436452967.svg)](https://zenodo.org/badge/latestdoi/436452967)-->
 
 The ontology module MEETUPS, which is part of the Polifonia Ontology Network, represents concepts and relationships describing encounters between people in the musical world in Europe from c. 1800 to c. 1945.
 
@@ -32,15 +32,16 @@ Ortenz
 David
 - Where were the places (in which they played)?
 - Where were the musicians coming from?
+
 Sophie
 - What is the time relationship between different musicians, e.g., who was working at the same time?
 - What was the composer’s network (patrons, institutions …)?
 
 
 These Competency Questions were selected from the following stories
-- Ortenz https://github.com/polifonia-project/stories/blob/main/Ortenz:%20Music%20Historian/Ortenz%232_MusicalSocialNetwork.md
-- David  https://github.com/polifonia-project/stories/blob/main/David:%20Music%20Historian/David%231_MusicHistorian.md
-- Sophie https://github.com/polifonia-project/stories/blob/main/Sophia:%20Musicologist/Sophia%231_MusiciansAndTheirEnvironment.md
+- [Ortenz](https://github.com/polifonia-project/stories/blob/main/Ortenz:%20Music%20Historian/Ortenz%232_MusicalSocialNetwork.md)
+- [David](https://github.com/polifonia-project/stories/blob/main/David:%20Music%20Historian/David%231_MusicHistorian.md)
+- [Sophie](https://github.com/polifonia-project/stories/blob/main/Sophia:%20Musicologist/Sophia%231_MusiciansAndTheirEnvironment.md)
 
 
 ## Statistics
