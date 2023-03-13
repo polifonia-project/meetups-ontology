@@ -1,0 +1,28 @@
+# ============== Place ========================
+# CQs 1-5
+
+# 1 Query one person places visited
+
+
+# 2 Query two people played/performed together
+
+# ============== Participants =================
+# CQs 6,7
+# 3 Query if two people met
+
+# 4 Who else he/she meet?
+
+# ============== Time =========================
+# CQs 8,9
+
+#5 Query when people met given the names of the participants
+
+#6 Query the people mentioned in encounters given an specific time
+
+# ============== Purpose / Events =============
+# CQs 10-18
+# Query what was the theme of the meeting of a given encounter? why?
+
+# Query: uses the type of event to list the place where the musician performed
+
+# Query about the roles of the participants
