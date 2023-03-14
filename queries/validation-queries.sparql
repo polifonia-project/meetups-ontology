@@ -1,0 +1,125 @@
+# ============== Place ========================
+# CQs 1-5
+
+# 1 Query places visited by an specific artist
+# ==============
+
+PREFIX ont: <http://w3id.org/polifonia/ontology/meetups#>
+
+SELECT distinct ?o
+WHERE 
+{
+	?s ont:place ?o .
+  	?s ont:subject <http://dbpedia.org/resource/Edward_Elgar> .
+}
+
+# Results in file sparql1Results.csv
+
+# 2 Query two people played/performed together
+# ==============
+
+
+PREFIX ont: <http://w3id.org/polifonia/ontology/meetups#>
+
+SELECT *
+WHERE 
+{
+  	?s ont:subject 
+        <http://dbpedia.org/resource/Edward_Elgar> .
+  	?s ont:person  
+        <http://dbpedia.org/resource/Adolf_Pollitzer> .
+  	?s ?p ?o .
+}
+
+# Results
+
+<http://w3id.org/polifonia/pilot/meetups/10085/7/6>
+        rdf:type          ont:Sentence ;
+        ont:excerpt       "His only formal musical training beyond piano and violin lessons from local teachers consisted of more advanced violin studies with Adolf Pollitzer, during brief visits to London in 1877–78." ;
+        ont:inParagraph   <http://w3id.org/polifonia/pilot/meetups/10085/7> ;
+        ont:person        <http://dbpedia.org/resource/Adolf_Pollitzer> ;
+        ont:place         <http://dbpedia.org/resource/London> ;
+        ont:prevSentence  <http://w3id.org/polifonia/pilot/meetups/10085/7/5> ;
+        ont:subject       <http://dbpedia.org/resource/Edward_Elgar> .
+        
+
+# ============== Participants =================
+# CQs 6,7
+
+# ==============
+# Query 3
+# one that retrieves all contemporary artists given a specific date
+
+PREFIX ont: <http://w3id.org/polifonia/ontology/meetups#>
+
+SELECT distinct ?subject ?date
+WHERE 
+{
+  	?s ont:subject ?subject .
+  	?s ont:timeExpression ?date .
+  	FILTER contains(?date,"1902")
+}
+
+# ==============
+# Query 4
+# one that retrieves all people that they met during their life, again we take the example of Edward Elgar.
+
+PREFIX ont: <http://w3id.org/polifonia/ontology/meetups#>
+
+SELECT distinct ?o
+WHERE 
+{
+	?s ont:person ?o .
+  	?s ont:subject 
+        <http://dbpedia.org/resource/Edward_Elgar> .
+    ?s ont:role ?role .
+}
+
+
+# ============== Time =========================
+# CQs 8,9
+
+#5 Query when people met given the names of the participants
+
+
+# (1) one that retrieves the date at which specific personalities met
+PREFIX ont: <http://w3id.org/polifonia/ontology/meetups#>
+
+SELECT * #distinct ?o
+WHERE 
+{
+  	?s ont:subject <http://dbpedia.org/resource/Edward_Elgar> .
+  	?s ont:person  <http://dbpedia.org/resource/Edward_VII> .
+  	?s ont:timeExpression ?date .
+}
+
+# results
+
+<http://w3id.org/polifonia/pilot/meetups/10085/17/4>
+        rdf:type            ont:Sentence ;
+        ont:excerpt         "To mark the coronation of Edward VII, Elgar was commissioned to set A. C. Benson's Coronation Ode for a gala concert at the Royal Opera House on 30 June 1902." ;
+        ont:inParagraph     <http://w3id.org/polifonia/pilot/meetups/10085/17> ;
+        ont:person          <http://dbpedia.org/resource/Edward_VII> , <http://dbpedia.org/resource/Edward_Elgar> ;
+        ont:place           <http://dbpedia.org/resource/Royal_Opera_House> ;
+        ont:prevSentence    <http://w3id.org/polifonia/pilot/meetups/10085/17/3> ;
+        ont:subject         <http://dbpedia.org/resource/Edward_Elgar> ;
+        ont:timeExpression  "30 June 1902" .
+        
+
+# ============== Purpose / Events =============
+# CQs 10-18
+# Query what was the theme of the meeting of a given encounter? why?
+
+PREFIX ont: <http://w3id.org/polifonia/ontology/meetups#>
+
+SELECT * 
+WHERE 
+{
+  	?s ont:subject 
+       <http://dbpedia.org/resource/Edward_Elgar> .
+  	?s ?p ?o .
+  	?s ont:hasPurpose ?purpose .
+}
+
+
+
