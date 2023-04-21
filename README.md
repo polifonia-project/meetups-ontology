@@ -1,3 +1,24 @@
+---
+component-id: meetups-ontology
+name: MEETUPS Ontology
+brief-description: Ontology that represents concepts and relationships describing encounters between people in the musical world in Europe from c. 1800 to c. 1945.
+type: Ontology
+release-date: 13/01/2023
+release-number: v0.1
+work-package: 
+- WP2
+pilot:
+- MEETUPS
+licence: Apache 2.0
+related-component:
+- meetups-pilot
+- meetups-knowledge-graph
+release link:
+- https://github.com/polifonia-project/meetups-ontology/releases/tag/polifonia
+credits:
+- https://github.com/albamoralest
+- https://github.com/enridaga
+---
 # MEETUPS Ontology module for MEETUPS PILOT
 
 [![DOI](https://zenodo.org/badge/588540533.svg)](https://zenodo.org/badge/latestdoi/588540533)
@@ -10,7 +31,7 @@ Typically, historical meetups, which are the main subject of this module, are de
 
 This ontology module is strictly related to the Polifonia pilot MEETUPS: https://github.com/polifonia-project/meetups_pilot
 
-![MEETUPS ontology module](meetups-ont-figure.png?raw=true "MEETUPS ontology module")
+![MEETUPS ontology module](meetups-ont-diagram-V0.2.png?raw=true "MEETUPS ontology module")
 
 ## Competency questions related to MEETUPS ontology module
 Ortenz
@@ -51,3 +72,8 @@ Considering the MEETUPS ontology is still in development, we report the followin
 - number of object properties: 5
 - number of datatype properties: 0
 - number of logical axioms: 27
+
+## Alignment to other ontologies
+
+MEETUPS pilot is part of the European project Polifonia and it is align to the Polifonia Ontology Network (PON)
+MEETUPS also reuse ontologies such as Time and ProvOnto
