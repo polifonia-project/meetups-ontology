@@ -6,7 +6,7 @@ type: Ontology
 release-date: 13/01/2023
 release-number: v0.1
 work-package: 
-- WP2
+- WP4
 pilot:
 - MEETUPS
 licence: Apache 2.0

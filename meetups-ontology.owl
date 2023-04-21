@@ -4,6 +4,7 @@
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core: <https://w3id.org/polifonia/ontology/core/> .
 @prefix prov: <http://w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time> .
@@ -52,6 +53,11 @@ meetups:hasAPurpose rdf:type owl:ObjectProperty ;
                     rdfs:range meetups:Purpose .
 
 
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasDescription
+meetups:hasDescription rdf:type owl:ObjectProperty ;
+                       rdfs:domain meetups:Meetup .
+
+
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasParticipant
 meetups:hasParticipant rdf:type owl:ObjectProperty ;
                        rdfs:domain meetups:Meetup ;
@@ -61,7 +67,7 @@ meetups:hasParticipant rdf:type owl:ObjectProperty ;
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasPlace
 meetups:hasPlace rdf:type owl:ObjectProperty ;
                  rdfs:domain meetups:Meetup ;
-                 rdfs:range meetups:Place .
+                 rdfs:range <http://w3id.org/polifonia/ontology/core/Place> .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasRole
@@ -87,14 +93,14 @@ meetups:hasTimeReference rdf:type owl:ObjectProperty ;
 #    Classes
 #################################################################
 
-###  http://w3id.org/polifonia/ontology/meetups-ontology#City
-meetups:City rdf:type owl:Class ;
-             rdfs:subClassOf meetups:Place .
-
-
-###  http://w3id.org/polifonia/ontology/meetups-ontology#Country
-meetups:Country rdf:type owl:Class ;
-                rdfs:subClassOf meetups:Place .
+###  http://w3id.org/polifonia/ontology/core/Place
+<http://w3id.org/polifonia/ontology/core/Place> rdf:type owl:Class ;
+                                                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty meetups:hasPlace ;
+                                                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                  owl:onClass <http://w3id.org/polifonia/ontology/core/Place>
+                                                                ] ;
+                                                rdfs:comment "The class that represents the location where the meetup took place" .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Meetup
@@ -107,7 +113,7 @@ meetups:Meetup rdf:type owl:Class ;
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty meetups:hasPlace ;
                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onClass meetups:Place
+                                 owl:onClass <http://w3id.org/polifonia/ontology/core/Place>
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty meetups:happensAt ;
@@ -133,18 +139,17 @@ meetups:Participant rdf:type owl:Class ;
                     rdfs:label "Participant" .
 
 
-###  http://w3id.org/polifonia/ontology/meetups-ontology#Place
-meetups:Place rdf:type owl:Class ;
-              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty meetups:hasPlace ;
-                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass meetups:Place
-                              ] ;
-              rdfs:comment "The class that represents the location where the meetup took place" .
-
-
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Purpose
 meetups:Purpose rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Class ;
+                                      owl:oneOf ( meetups:BusinessCareer
+                                                  meetups:Coincidence
+                                                  meetups:Education
+                                                  meetups:MusicMaking
+                                                  meetups:PersonalLife
+                                                  meetups:PublicCelebration
+                                                )
+                                    ] ;
                 rdfs:comment "The class that represents all the different types of music related reasons for the encounter" .
 
 
@@ -167,11 +172,6 @@ meetups:TimeExpression rdf:type owl:Class ;
                                          owl:onClass <http://www.w3.org/2006/time#GeneralDateTimeExpression>
                                        ] ;
                        rdfs:comment "Time or duration of the meetup. It could be that a meetup happened in a specific date or maybe during a specific period" .
-
-
-###  http://w3id.org/polifonia/ontology/meetups-ontology#Venue
-meetups:Venue rdf:type owl:Class ;
-              rdfs:subClassOf meetups:Place .
 
 
 ###  http://www.w3.org/2006/time#GeneralDateTimeExpression
@@ -239,6 +239,15 @@ meetups:TimeReference rdf:type owl:NamedIndividual ,
 #################################################################
 #    General axioms
 #################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://w3id.org/polifonia/ontology/core/Place>
+                meetups:Meetup
+                meetups:Participant
+                meetups:TimeExpression
+              )
+] .
+
 
 [ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( meetups:BusinessCareer
