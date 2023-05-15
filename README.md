@@ -1,25 +1,36 @@
 ---
 component-id: meetups-ontology
 name: MEETUPS Ontology
-brief-description: Ontology that represents concepts and relationships describing encounters between people in the musical world in Europe from c. 1800 to c. 1945.
+description: "Ontology that represents concepts and relationships describing encounters between people in the musical world in Europe from c. 1800 to c. 1945."
 type: Ontology
-release-date: 13/01/2023
-release-number: v0.1
 work-package: 
 - WP4
 pilot:
 - MEETUPS
+project: polifonia-project
+resource: https://github.com/polifonia-project/meetups-ontology
+release-date: 13/01/2023
+release-number: v0.1
+release link: https://github.com/polifonia-project/meetups-ontology/releases/tag/v0.1
+doi: https://zenodo.org/badge/latestdoi/588540533
+changelog: https://github.com/polifonia-project/meetups-ontology/releases/tag/v0.1
 licence: Apache 2.0
-related-component:
-- meetups-pilot
-- meetups-knowledge-graph
-release link:
-- https://github.com/polifonia-project/meetups-ontology/releases/tag/polifonia
+copyright: Copyright (c) 2023 MEETUPS @ The Open University
+contributors:
+- Alba Morales Tirado https://github.com/albamoralest
+- Enrico Daga https://github.com/enridaga
 credits:
 - https://github.com/albamoralest
 - https://github.com/enridaga
+related components:
+- informed-by: 
+	- meetups-pilot
+	- meetups-knowledge-graph
+	- Ortenz
+	- David
+	- Sophie
 ---
-# MEETUPS Ontology module for MEETUPS PILOT
+# MEETUPS Ontology
 
 [![DOI](https://zenodo.org/badge/588540533.svg)](https://zenodo.org/badge/latestdoi/588540533)
 
