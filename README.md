@@ -20,13 +20,13 @@ contributors:
 - Alba Morales Tirado https://github.com/albamoralest
 - Enrico Daga https://github.com/enridaga
 related-components:
-- informed-by: 
-	- meetups-pilot
-	- meetups-knowledge-graph
+- informed-by:
+ - meetups-pilot
+ - meetups-knowledge-graph
 - persona:
-	- Ortenz
-	- David
-	- Sophie
+ - Ortenz
+ - David
+ - Sophie
 ---
 # MEETUPS Ontology
 
