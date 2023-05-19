@@ -15,19 +15,20 @@ release-link: https://github.com/polifonia-project/meetups-ontology/releases/tag
 doi: https://zenodo.org/badge/latestdoi/588540533
 changelog: https://github.com/polifonia-project/meetups-ontology/releases/tag/v0.1
 licence: Apache 2.0
-copyright: Copyright (c) 2023 MEETUPS @ The Open University
+copyright: "Copyright (c) 2023 MEETUPS @ The Open University"
 contributors:
-- Alba Morales Tirado https://github.com/albamoralest
-- Enrico Daga https://github.com/enridaga
+- Alba Morales Tirado <https://github.com/albamoralest>
+- Enrico Daga <https://github.com/enridaga>
 related-components:
 - informed-by:
- - meetups-pilot
- - meetups-knowledge-graph
+  - meetups-pilot
+  - meetups-knowledge-graph
 - persona:
- - Ortenz
- - David
- - Sophie
+  - Ortenz
+  - David
+  - Sophie
 ---
+
 # MEETUPS Ontology
 
 [![DOI](https://zenodo.org/badge/588540533.svg)](https://zenodo.org/badge/latestdoi/588540533)
