@@ -4,7 +4,7 @@
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix core: <https://w3id.org/polifonia/ontology/core/> .
+@prefix core: <http://w3id.org/polifonia/ontology/core/> .
 @prefix prov: <http://w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time> .
@@ -67,7 +67,7 @@ meetups:hasParticipant rdf:type owl:ObjectProperty ;
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasPlace
 meetups:hasPlace rdf:type owl:ObjectProperty ;
                  rdfs:domain meetups:Meetup ;
-                 rdfs:range <http://w3id.org/polifonia/ontology/core/Place> .
+                 rdfs:range core:Location .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasRole
@@ -93,14 +93,15 @@ meetups:hasTimeReference rdf:type owl:ObjectProperty ;
 #    Classes
 #################################################################
 
-###  http://w3id.org/polifonia/ontology/core/Place
-<http://w3id.org/polifonia/ontology/core/Place> rdf:type owl:Class ;
-                                                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty meetups:hasPlace ;
-                                                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                  owl:onClass <http://w3id.org/polifonia/ontology/core/Place>
-                                                                ] ;
-                                                rdfs:comment "The class that represents the location where the meetup took place" .
+###  http://w3id.org/polifonia/ontology/core/Location
+core:Location rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty meetups:hasPlace ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass core:Location
+                              ] ;
+              rdfs:comment "The class that represents the location where the meetup took place" ;
+              rdfs:seeAlso core:Place .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Meetup
@@ -113,7 +114,7 @@ meetups:Meetup rdf:type owl:Class ;
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty meetups:hasPlace ;
                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onClass <http://w3id.org/polifonia/ontology/core/Place>
+                                 owl:onClass core:Location
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty meetups:happensAt ;
@@ -136,7 +137,8 @@ meetups:Participant rdf:type owl:Class ;
                                       owl:onClass meetups:Role
                                     ] ;
                     rdfs:comment "This class represents all the entities that are part of a historical meetup" ;
-                    rdfs:label "Participant" .
+                    rdfs:label "Participant" ;
+                    rdfs:seeAlso core:Person .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#Purpose
@@ -171,7 +173,8 @@ meetups:TimeExpression rdf:type owl:Class ;
                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                          owl:onClass <http://www.w3.org/2006/time#GeneralDateTimeExpression>
                                        ] ;
-                       rdfs:comment "Time or duration of the meetup. It could be that a meetup happened in a specific date or maybe during a specific period" .
+                       rdfs:comment "Time or duration of the meetup. It could be that a meetup happened in a specific date or maybe during a specific period" ;
+                       rdfs:seeAlso core:TimeInterval .
 
 
 ###  http://www.w3.org/2006/time#GeneralDateTimeExpression
@@ -241,7 +244,7 @@ meetups:TimeReference rdf:type owl:NamedIndividual ,
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( <http://w3id.org/polifonia/ontology/core/Place>
+  owl:members ( core:Location
                 meetups:Meetup
                 meetups:Participant
                 meetups:TimeExpression
