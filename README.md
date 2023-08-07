@@ -32,7 +32,7 @@ related-components:
 # MEETUPS Ontology
 
 [![DOI](https://zenodo.org/badge/588540533.svg)](https://zenodo.org/badge/latestdoi/588540533)
-[![License: Apache 2.0]]
+[![License: Apache 2.0]](http://www.apache.org/licenses/LICENSE-2.0)
 
 Ontology URI: [https://w3id.org/polifonia/ontology/meetups-ontology#/](https://w3id.org/polifonia/ontology/meetups-ontology#/)
 
