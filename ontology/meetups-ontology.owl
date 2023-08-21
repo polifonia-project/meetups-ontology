@@ -88,9 +88,23 @@ mtps:hasAPurpose rdf:type owl:ObjectProperty ;
                  rdfs:range mtps:Purpose .
 
 
-###  http://w3id.org/polifonia/ontology/meetups-ontology#hasDescription
-mtps:hasDescription rdf:type owl:ObjectProperty ;
-                    rdfs:domain mtps:Meetup .
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasDBpediaEntity
+mtps:hasDBpediaEntity rdf:type owl:ObjectProperty ;
+                      rdfs:domain core:Location ;
+                      rdfs:range rdfs:Resource ;
+                      rdfs:label "has a DBpedia Entity"@en .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasEvidenceText
+mtps:hasEvidenceText rdf:type owl:ObjectProperty ;
+                     rdfs:domain mtps:Meetup ,
+                                 mtps:TimeExpression ;
+                     rdfs:range [ rdf:type owl:Restriction ;
+                                  owl:onProperty mtps:evidenceText ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ;
+                     rdfs:label "has evidence text"@en .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasParticipant
@@ -113,7 +127,17 @@ mtps:hasRole rdf:type owl:ObjectProperty ;
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#hasTimeReference
 mtps:hasTimeReference rdf:type owl:ObjectProperty ;
-                      rdfs:domain mtps:TimeExpression .
+                      rdfs:domain mtps:Meetup ;
+                      rdfs:range mtps:TimeExpression ;
+                      rdfs:comment "The relation between a meetup and a time reference"@en ;
+                      rdfs:label "has time reference"@en .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#hasWikidataEntity
+mtps:hasWikidataEntity rdf:type owl:ObjectProperty ;
+                       rdfs:domain core:Location ;
+                       rdfs:range rdfs:Resource ;
+                       rdfs:label "has Wikidata entity"@en .
 
 
 ###  http://www.w3.org/2006/time#hasBeginning
@@ -122,6 +146,18 @@ mtps:hasTimeReference rdf:type owl:ObjectProperty ;
 
 ###  http://www.w3.org/2006/time#hasEnd
 <http://www.w3.org/2006/time#hasEnd> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#evidenceText
+mtps:evidenceText rdf:type owl:DatatypeProperty ;
+                  rdfs:domain mtps:Meetup ,
+                              mtps:TimeExpression ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "evidence text"@en .
 
 
 #################################################################
@@ -212,6 +248,28 @@ mtps:TimeExpression rdf:type owl:Class ;
                     rdfs:seeAlso core:TimeInterval .
 
 
+###  http://w3id.org/polifonia/ontology/meetups-ontology#TimePoint
+mtps:TimePoint rdf:type owl:Class ;
+               rdfs:subClassOf mtps:TimeExpression ;
+               owl:disjointWith mtps:TimeRange ,
+                                mtps:TimeReference .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#TimeRange
+mtps:TimeRange rdf:type owl:Class ;
+               rdfs:subClassOf mtps:TimeExpression ;
+               owl:disjointWith mtps:TimeReference .
+
+
+###  http://w3id.org/polifonia/ontology/meetups-ontology#TimeReference
+mtps:TimeReference rdf:type owl:Class ;
+                   rdfs:subClassOf mtps:TimeExpression .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type owl:Class .
+
+
 ###  http://www.w3.org/2006/time#GeneralDateTimeExpression
 <http://www.w3.org/2006/time#GeneralDateTimeExpression> rdf:type owl:Class .
 
@@ -260,18 +318,15 @@ mtps:Subject rdf:type owl:NamedIndividual ,
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#TimePoint
-mtps:TimePoint rdf:type owl:NamedIndividual ,
-                        mtps:TimeExpression .
+mtps:TimePoint rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#TimeRange
-mtps:TimeRange rdf:type owl:NamedIndividual ,
-                        mtps:TimeExpression .
+mtps:TimeRange rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/polifonia/ontology/meetups-ontology#TimeReference
-mtps:TimeReference rdf:type owl:NamedIndividual ,
-                            mtps:TimeExpression .
+mtps:TimeReference rdf:type owl:NamedIndividual .
 
 
 #################################################################
