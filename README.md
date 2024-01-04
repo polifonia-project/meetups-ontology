@@ -121,3 +121,7 @@ MEETUPS also reuse ontologies such as Time and ProvOnto
   year={2023}
 }
 ```
+
+## Acknowledgements
+
+This work was supported by the EU’s Horizon Europe research and innovation programme within the Polifonia project (grant agreement N. 101004746).
